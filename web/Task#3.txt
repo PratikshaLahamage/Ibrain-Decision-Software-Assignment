@@ -1,0 +1,8 @@
+#3
+1)Calculate the age of the patient:
+
+update patientinfo set age=TIMESTAMPDIFF(YEAR,CONCAT_WS('-',SUBSTRING_INDEX(birthdate, '-', -1),SUBSTRING_INDEX(SUBSTRING_INDEX(birthdate, '-', 2), '-', -1),SUBSTRING_INDEX(birthdate, '-', 1)),CURDATE());
+
+2)Update patientagegroup column based on a following condition - if age is less than 18 then Minor and other Adult
+
+update patientinfo set patientagegroup=IF(age<18, "Minor", "Adult");
